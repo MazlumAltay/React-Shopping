@@ -125,7 +125,6 @@ export class DataProvider extends Component {
                 //this.setState({favorites: [item]})
                 favorites.push(item)
                 console.log(favorites)
-                
             }
          })
         //this.setState({favorites:[]}) 
@@ -169,6 +168,20 @@ export class DataProvider extends Component {
        
     };
 
+    removeFavorites = id =>{
+        if(window.confirm("Bu ürünü silmek istiyor musunuz?")){
+            const {favorites} = this.state;
+            favorites.forEach((item, index) =>{
+                if(item._id === id){
+                    favorites.splice(index, 1)
+                }
+            })
+            this.setState({favorites: favorites});
+            this.getTotal();
+        }
+       
+    };
+
     getTotal = ()=>{
         const{cart} = this.state;
         const res = cart.reduce((prev, item) => {
@@ -195,11 +208,11 @@ export class DataProvider extends Component {
    
 
     render() {
-        const {products, cart,total} = this.state;
-        const {addCart, addFavorites, reduction,increase,removeProduct,getTotal} = this;
+        const {products, cart,total, favorites} = this.state;
+        const {addCart, addFavorites, reduction,increase,removeProduct,removeFavorites,getTotal} = this;
         return (
             <DataContext.Provider 
-            value={{products, addCart, addFavorites, cart, reduction,increase,removeProduct,total,getTotal}}>
+            value={{products, addCart, favorites, addFavorites, cart, reduction,increase,removeProduct,removeFavorites,total,getTotal}}>
                 {this.props.children}
             </DataContext.Provider>
         )

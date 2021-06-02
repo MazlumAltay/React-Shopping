@@ -8,12 +8,12 @@ export class Favorites extends Component {
     static contextType = DataContext;
 
     render() {
-        const {favorites,addFavorites} = this.context;
+        const {favorites,addFavorites, removeFavorites} = this.context;
         return (
             <div id="product">
                {
                    favorites.map(product =>(
-                       <div className="favorites" key={product._id}>
+                       <div className="card" key={product._id}>
                            <Link to={`/product/${product._id}`}>
                                <img src={product.src} alt=""/>
                            </Link>
@@ -23,7 +23,8 @@ export class Favorites extends Component {
                                </h3>
                                <span>₺{product.price}</span>
                                <p>{product.description}</p>
-                               <button onClick={()=> addFavorites(product._id)}>Favorilere ekle</button>
+                                {()=> addFavorites(product._id)}
+                                <button className="favorites" onClick={() => removeFavorites(product._id)}> Sil </button>
                            </div>
                        </div>
                    ))
