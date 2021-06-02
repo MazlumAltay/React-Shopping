@@ -124,11 +124,12 @@ export class DataProvider extends Component {
             if(item._id === id) {
                 //this.setState({favorites: [item]})
                 favorites.push(item)
-                console.log(favorites)
+                //console.log(favorites)
             }
          })
         //this.setState({favorites:[]}) 
     };
+
 
 
 

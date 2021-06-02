@@ -48,3 +48,10 @@
     padding: 10px 25px;
     display: inline-block;
 }
+.box .favorites{
+    background: #333;
+    color: white;
+    text-decoration: none;
+    padding: 10px 25px;
+    display: inline-block;
+}
